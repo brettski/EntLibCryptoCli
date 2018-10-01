@@ -11,7 +11,7 @@ namespace EntLibCryptoCli
                 .MapResult(
                 (Options.RestoreKey opts) => Service.RestoreKeyService.RunRestore(opts),
                 (Options.ExportKey opts) => Service.RestoreKeyService.RunRestore(new Options.RestoreKey()),
-                errs => 1);
+                errs => 1000);
 
             /*
             var result = Parser.Default.ParseArguments<Options.Import, Options.Export>(args);
