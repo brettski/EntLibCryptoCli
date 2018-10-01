@@ -2,10 +2,11 @@
 using System.IO;
 using Microsoft.Practices.EnterpriseLibrary.Security.Cryptography;
 using System.Security.Cryptography;
+using EntLibCryptoCli.Model;
 
 namespace EntLibCryptoCli
 {
-    public static class ImportKey
+    public static class RestoreSecureKey
     {
         /// <summary>
         /// Restores a Cryptographic key from previously exported file. Use to transfer key to new computer
@@ -14,11 +15,19 @@ namespace EntLibCryptoCli
         /// <param name="Password">Password used to secure previously exported key</param>
         /// <param name="NewProviderKey">Location and filename of key to be restored.</param>
         /// <returns></returns>
-        public static bool Import(FileInfo ImportFile,
+        public static RestoreSecureKeyResult Restore(FileInfo ImportFile,
                                   string Password,
                                   string NewProviderKey)
         {
+            RestoreSecureKeyResult result = new RestoreSecureKeyResult
+            {
+                IsInError = false,
+                ImportFile = ImportFile.FullName,
+                RestoredKey = NewProviderKey,
+                Password = Password
+            };
             ProtectedKey RestoredSecureKey;
+            KeyManager.ClearCache();
 
             try
             {
@@ -33,12 +42,12 @@ namespace EntLibCryptoCli
                 }
             } catch (Exception ex)
             {
-                Console.Write("That didn't work\n");
-                Console.Write(ex.Message);
-
+                result.IsInError = true;
+                result.ErrorString = ex.InnerException.ToString();
+                result.Exception = ex;
             }
 
-            return false;
+            return result;
         }
 
     }

@@ -2,13 +2,15 @@
 using System.IO;
 using System.Text;
 using Microsoft.Practices.EnterpriseLibrary.Security.Cryptography;
+using System.Security.Cryptography;
+using EntLibCryptoCli.Model;
 
 namespace EntLibCryptoCli.Service
 {
-    public static class ImportService
+    public static class RestoreKeyService
     {
 
-        public static int RunImport(Options.Import ImportOpts)
+        public static int RunRestore(Options.RestoreKey ImportOpts)
         {
             // Checks
             int inError = 0;
@@ -39,7 +41,6 @@ namespace EntLibCryptoCli.Service
                 errMsgText.Append($"- Other error encountered:\n{ex.InnerException.ToString()}");
             }
 
-
             if (ImportOpts.Password.Trim() == string.Empty)
             {
                 inError++;
@@ -48,35 +49,30 @@ namespace EntLibCryptoCli.Service
 
             if (inError>0)
             {
-                Console.Write($"/nThere is a problem with the provided options:\n\n{errMsgText.ToString()}");
+                Console.Write($"\nThere is a problem with the provided parameters:\n\n{errMsgText.ToString()}");
                 return inError;
             }
 
             // Work
-            Console.WriteLine("This is work time now.");
 
-            /*
-            string exportKeyFile = @"C:\Dlls\Valtera.Namespace 2.0\EngagementProviderExport.txt";
-            string exportKeyPw = "@password";
-            string saveKeyFile = @"C:\Dlls\Valtera.Namespace 2.0\bin\EngagementProvider.key";
-            ProtectedKey NewServerKey;
-
-            using (FileStream fs = File.OpenRead(exportKeyFile))
+            FileInfo importFile = new FileInfo(ImportOpts.ImportFile);
+            RestoreSecureKeyResult result = RestoreSecureKey.Restore(importFile, ImportOpts.Password, ImportOpts.OutputKeyFile);
+            if (result.IsInError)
             {
-	            NewServerKey = KeyManager.RestoreKey(fs, exportKeyPw, System.Security.Cryptography.DataProtectionScope.LocalMachine);
-	            NewServerKey.Dump();
+                Console.Write($"Unable to restore secure key. Exception message is:\n{result.Exception.Message}");
+                return 10;
             }
-
-            NewServerKey.Dump();
-
-            using (FileStream ofs = File.OpenWrite(saveKeyFile)) 
+            if (File.Exists(ImportOpts.OutputKeyFile) && new FileInfo(ImportOpts.OutputKeyFile).Length > 10)
             {
-	            KeyManager.Write(ofs, NewServerKey);
-
+                Console.Write($"Key, {ImportOpts.OutputKeyFile}, created successfully!");
+                return 0;
             }
-            */
-
-            return 0;
+            else
+            {
+                Console.Write($"Key, {ImportOpts.OutputKeyFile}, creation failed!");
+                return -1;
+            }
+            //return 0;
         }
     }
 }
