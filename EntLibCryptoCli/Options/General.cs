@@ -10,9 +10,7 @@ namespace EntLibCryptoCli.Options
         [Option('v', "verbose", Required = false, HelpText = "Set output to verbose messages.")]
         public bool Verbose { get; set; }
 
-        /* I don't think this is needed
-        [Option('h', "help", Required = false, HelpText = "Desplays help infomation.")]
+        [Option('h', Required = false, HelpText = "Use --help for interactive help")]
         public bool Help { get; set; }
-        */
     }
 }
