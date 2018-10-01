@@ -43,7 +43,9 @@ namespace EntLibCryptoCli
             } catch (Exception ex)
             {
                 result.IsInError = true;
-                result.ErrorString = ex.InnerException.ToString();
+                result.ErrorString = ex.Message.ToString();
+                if (result.ErrorString.StartsWith("Padding is invalid and cannot be removed"))
+                    result.ErrorString += "\nIt may be due to an incorrect password.";
                 result.Exception = ex;
             }
 
