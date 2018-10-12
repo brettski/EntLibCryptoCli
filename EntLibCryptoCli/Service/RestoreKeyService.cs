@@ -19,8 +19,8 @@ namespace EntLibCryptoCli.Service
             if (!File.Exists(RestoreKeyOpts.ImportFile))
             {
                 // Import file Doesn't exist 
-                inError++;
-                errMsgText.Append($"- Provided import file, {RestoreKeyOpts.ImportFile}, doesn't exist.\n");
+                inError = 1;
+                errMsgText.Append($"- Provided import file, '{RestoreKeyOpts.ImportFile}', doesn't exist.\n");
             }
 
             try
@@ -29,27 +29,27 @@ namespace EntLibCryptoCli.Service
                 { }
             } catch (UnauthorizedAccessException)
             {
-                inError++;
-                errMsgText.Append($"- Unable to open output file, {RestoreKeyOpts.OutputKeyFile}, for writting\n");
+                inError = 2;
+                errMsgText.Append($"- Unable to open output file, '{RestoreKeyOpts.OutputKeyFile}', for writting\n");
             } catch (DirectoryNotFoundException)
             {
-                inError++;
-                errMsgText.Append($"- Directory not found: {RestoreKeyOpts.OutputKeyFile}");
+                inError = 3;
+                errMsgText.Append($"- Directory not found, cannot create output file: '{RestoreKeyOpts.OutputKeyFile}'\n");
             } catch (Exception ex)
             {
-                inError++;
-                errMsgText.Append($"- Other error encountered:\n{ex.InnerException.ToString()}");
+                inError = 9;
+                errMsgText.Append($"- Unknown error encountered:\n{ex.Message}\n");
             }
 
             if (RestoreKeyOpts.Password.Trim() == string.Empty)
             {
-                inError++;
-                errMsgText.Append($"- Provided password value, {RestoreKeyOpts.Password.Trim()}, is empty\n");
+                inError = 4;
+                errMsgText.Append($"- Provided password value is empty or contains only whitespace\n");
             }
 
-            if (inError>0)
+            if (inError > 0)
             {
-                Console.Write($"\nThere is a problem with the provided parameters:\n\n{errMsgText.ToString()}");
+                Console.Write($"\nThere is a problem with the provided parameters:\n\n{errMsgText.ToString()}\n\n");
                 return inError;
             }
 
@@ -60,7 +60,7 @@ namespace EntLibCryptoCli.Service
             if (result.IsInError)
             {
                 Console.Write($"\nUnable to restore secure key. Exception message is:\n{result.ErrorString}\n");
-                return 10;
+                return 5;
             }
             if (File.Exists(RestoreKeyOpts.OutputKeyFile) && new FileInfo(RestoreKeyOpts.OutputKeyFile).Length > 10)
             {
@@ -72,7 +72,6 @@ namespace EntLibCryptoCli.Service
                 Console.Write($"\nKey, {RestoreKeyOpts.OutputKeyFile}, creation failed!\n");
                 return -1;
             }
-            //return 0;
         }
     }
 }
