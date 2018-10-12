@@ -11,7 +11,7 @@ namespace EntLibCryptoCli.Options
         [Option('p', "password", Required = true, HelpText = "Password to protext exported key. Min 8, 1 punctuation")]
         public string Password { get; set; }
 
-        [Option('e', "exportfile", Required = true, HelpText = "Location and name for exported key")]
+        [Option('e', "exportfile", Required = true, HelpText = "Location and name for key to export")]
         public string Exportfile { get; set; }
     }
 }

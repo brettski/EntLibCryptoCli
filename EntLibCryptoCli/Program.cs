@@ -10,7 +10,7 @@ namespace EntLibCryptoCli
             return Parser.Default.ParseArguments<Options.RestoreKey, Options.ExportKey>(args)
                 .MapResult(
                 (Options.RestoreKey opts) => Service.RestoreKeyService.RunRestore(opts),
-                (Options.ExportKey opts) => Service.RestoreKeyService.RunRestore(new Options.RestoreKey()),
+                (Options.ExportKey opts) => Service.ArchiveKeyService.RunExport(opts),
                 errs => 1000);
 
             /*
