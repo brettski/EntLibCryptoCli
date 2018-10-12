@@ -4,7 +4,9 @@
 
 ## Enterprise Library Cryptography Block CLI
 
-Born out of a requirement to restore RijndaelManaged Symmetric keys from the command line and removing the manual use of the EntLibConfig.exe app.
+Born out of a requirement to restore RijndaelManaged Symmetric keys from the command line and removing the manual use of the EntLibConfig.exe app. Why does that matter? The EntLibConfig.exe application is a desktop app with no command line support. 
+
+So if you have an older application which depends on the Enterprise Library Crypography Block and which to run that appliation in an autoscalling group, you will not be able to as the RijndaelManaged key is DPAPI protected and must be `restored` on each new computer it is used on. Before this CLI, that could only be done through a manual clickity-clicky app.  Well unless you roll your own of course :).
 
 Inputs: A previously Archived (exported) key, the password for the exported key
 
