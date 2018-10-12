@@ -11,5 +11,7 @@ namespace EntLibCryptoCli.Utilities
         public bool IsFailed { get; set; }
 
         public string FailedReason { get; set; }
+
+        public bool[] TestIsFailed { get; set; }
     }
 }
