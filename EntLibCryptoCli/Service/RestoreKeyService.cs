@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using Microsoft.Practices.EnterpriseLibrary.Security.Cryptography;
-using System.Security.Cryptography;
 using EntLibCryptoCli.Model;
 
 namespace EntLibCryptoCli.Service
