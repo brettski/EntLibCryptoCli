@@ -8,10 +8,10 @@ namespace EntLibCryptoCli.Options
         [Option('k', "keyfile", Required = true, HelpText = "Current working secured Symmetric key to archive")]
         public string KeyFile { get; set; }
 
-        [Option('p', "password", Required = true, HelpText = "Password to protext exported key. Min 8, 1 punctuation")]
+        [Option('p', "password", Required = true, HelpText = "Password to protext archived key. Min 8, 1 punctuation, mixed case")]
         public string Password { get; set; }
 
-        [Option('e', "archivefile", Required = true, HelpText = "File location and name for key to export")]
+        [Option('a', "archivefile", Required = true, HelpText = "File location and name for key to export")]
         public string Archivefile { get; set; }
     }
 }

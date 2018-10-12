@@ -14,11 +14,11 @@ namespace EntLibCryptoCli.Service
             int inError = 0;
             StringBuilder errMsgText = new StringBuilder();
 
-            if (!File.Exists(RestoreKeyOpts.ImportFile))
+            if (!File.Exists(RestoreKeyOpts.ArchiveFile))
             {
                 // Import file Doesn't exist 
                 inError = 1;
-                errMsgText.Append($"- Provided import file, '{RestoreKeyOpts.ImportFile}', doesn't exist.\n");
+                errMsgText.Append($"- Provided import file, '{RestoreKeyOpts.ArchiveFile}', doesn't exist.\n");
             }
 
             try
@@ -53,7 +53,7 @@ namespace EntLibCryptoCli.Service
 
             // Work
 
-            FileInfo importFile = new FileInfo(RestoreKeyOpts.ImportFile);
+            FileInfo importFile = new FileInfo(RestoreKeyOpts.ArchiveFile);
             RestoreSecureKeyResult result = RestoreSecureKey.Restore(importFile, RestoreKeyOpts.Password, RestoreKeyOpts.OutputKeyFile);
             if (result.IsInError)
             {
