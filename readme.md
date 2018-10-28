@@ -65,7 +65,7 @@ After downloading the release from [GitHub](https://github.com/brettski/EntLibCr
 1. If you like you may encrypt some text:
     1. `EntLibCryptoCli encrypt -s "some text"`
 1. The decrypt it again:
-    1. `EntLibCryptoCli decrypt -s 0f6ByzwQcYUR106b7iCwti75FJLhpfizskMX1UCRnmBsn47saoKM6WX70Pka7aMB`
+    1. `EntLibCryptoCli decrypt -s LKFqWSVE3OsScUvgnuP7/KBJCqgmX2qtmJhfvWXz4ZebTYSHbINwrncX8Qmt29xt`
         - Please note that your encrypted string WILL be different due to the way AES encryption work. Though this string will decrypt to the same value.
 
 ## Troubleshooting
