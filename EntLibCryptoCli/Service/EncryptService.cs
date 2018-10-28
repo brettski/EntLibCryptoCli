@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using EntLibCryptoCli.Model;
 
 namespace EntLibCryptoCli.Service
 {
@@ -35,13 +34,13 @@ namespace EntLibCryptoCli.Service
                 if (!File.Exists(EncryptOptions.PlanTextFile))
                 {
                     inError++;
-                    errMsgText.Append($"- Provided plain text file, {EncryptOptions.PlanTextFile}, doesn't exist!");
+                    errMsgText.Append($"- Provided plain text file, {EncryptOptions.PlanTextFile}, doesn't exist.");
                 }
             }
 
             if (inError > 0)
             {
-                Console.Write($"\nThere is a problem with provided parameters (--help for help):\n\n{errMsgText.ToString()}");
+                Console.Write($"\nThere is a problem with provided parameters (--help for help):\n\n{errMsgText.ToString()}\n");
                 return inError;
             }
 
@@ -80,7 +79,7 @@ namespace EntLibCryptoCli.Service
                 result = EncryptText.Encrypt(valueToEncrypt);
             } catch (Exception ex)
             {
-                Console.Write($"- Error while encrypting string:\n\n{ex.Message}");
+                Console.Write($"- Error while encrypting string:\n\n{ex.Message}\n\n");
                 return 112;
             }
             Console.Write(result);

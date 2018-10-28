@@ -91,9 +91,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArchiveKey.cs" />
+    <Compile Include="DecryptText.cs" />
     <Compile Include="EncryptText.cs" />
     <Compile Include="Model\ArchiveKeyResult.cs" />
     <Compile Include="Model\RestoreSecureKeyResult.cs" />
+    <Compile Include="Options\Decrypt.cs" />
     <Compile Include="Options\Encrypt.cs" />
     <Compile Include="RestoreSecureKey.cs" />
     <Compile Include="Options\ArchiveKey.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ArchiveKeyService.cs" />
+    <Compile Include="Service\DecryptService.cs" />
     <Compile Include="Service\EncryptService.cs" />
     <Compile Include="Service\RestoreKeyService.cs" />
     <Compile Include="Utilities\Validate.cs" />
