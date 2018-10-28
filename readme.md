@@ -1,7 +1,7 @@
 # EntLibCryptoCli
 
 [![Build status](https://brettski.visualstudio.com/EntLibCryptoCli/_apis/build/status/EntLibCryptoCli-.NET%20Desktop-CI)](https://brettski.visualstudio.com/EntLibCryptoCli/_build/latest?definitionId=1)
-[![release](https://img.shields.io/badge/Release-v1.2.0-blue.svg)](https://github.com/brettski/EntLibCryptoCli/releases/tag/v1.2.0)
+[![release](https://img.shields.io/badge/Release-v1.2.0-blue.svg)](https://github.com/brettski/EntLibCryptoCli/releases/tag/v1.3.0)
 
 ## Enterprise Library Cryptography Block CLI
 
@@ -38,7 +38,7 @@ Restore an archived key on a computer:
 
 ## Basic Functionality Test
 
-In the release package is a folder named TestKey. There is an exported key (ExportedKey.txt) located here which may be restored for testing encryption and decryption with the restored key.
+In the release package is a folder named TestKey. There is an exported (archived) key (ExportedKey.txt) located here which may be restored for testing encryption and decryption with the provided encrypted text.
 
 Note: DO NOT use this key for your own projects! It is provided only as a convenience to allow you to to test the cli's functionality on your machine.
 
