@@ -33,7 +33,7 @@ namespace EntLibCryptoCli
             {
                 using (FileStream fs = File.OpenRead(ImportFile.FullName))
                 {
-                    RestoredSecureKey = KeyManager.RestoreKey(fs, Password, DataProtectionScope.CurrentUser);
+                    RestoredSecureKey = KeyManager.RestoreKey(fs, Password, DataProtectionScope.LocalMachine);
                 }
 
                 using (FileStream ofs = File.OpenWrite(NewProviderKey))
