@@ -49,7 +49,7 @@ namespace EntLibCryptoCli.Service
 
             // Work
             FileInfo generateFile = new FileInfo(GenerateKeyOpts.KeyFile);
-            bool result = GenerateSecureKey.Generate(GenerateKeyOpts.Password, generateFile);
+            bool result = GenerateSecureKey.Generate(generateFile, GenerateKeyOpts.Password);
             if (!result)
             {
                 Console.Write($"\nUnable to generate secure key.");
