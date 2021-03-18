@@ -97,6 +97,7 @@
     <Compile Include="Model\RestoreSecureKeyResult.cs" />
     <Compile Include="Options\Decrypt.cs" />
     <Compile Include="Options\Encrypt.cs" />
+    <Compile Include="Options\GenerateKey.cs" />
     <Compile Include="RestoreSecureKey.cs" />
     <Compile Include="Options\ArchiveKey.cs" />
     <Compile Include="Options\General.cs" />
@@ -106,6 +107,8 @@
     <Compile Include="Service\ArchiveKeyService.cs" />
     <Compile Include="Service\DecryptService.cs" />
     <Compile Include="Service\EncryptService.cs" />
+    <Compile Include="Service\GenerateKeyService.cs" />
+    <Compile Include="GenerateSecureKey.cs" />
     <Compile Include="Service\RestoreKeyService.cs" />
     <Compile Include="Utilities\Validate.cs" />
     <Compile Include="Utilities\ValidatePasswordResult.cs" />

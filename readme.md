@@ -44,6 +44,9 @@ Archive a working DPAPI protected key so you may transfer it to another computer
 Restore an archived key on a computer:  
 `EntLibCryptoCli restorekey -a c:\path\archivefile.txt -k c:\path\restore\newkeyfile.key -p Str@ongPw`
 
+Generate a new key on a computer:  
+`EntLibCryptoCli generatekey -k c:\path\restore\newkeyfile.key -p Str@ongPw`
+
 ## Basic Functionality Test
 
 In the release package is a folder named TestKey. There is an exported (archived) key (ExportedKey.txt) located here which may be restored for testing encryption and decryption with the provided encrypted text.
