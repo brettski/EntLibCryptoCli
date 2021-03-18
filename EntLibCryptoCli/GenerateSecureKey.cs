@@ -7,13 +7,12 @@ namespace EntLibCryptoCli.Service
     public static class GenerateSecureKey
     {
         /// <summary>
-        /// Restores a Cryptographic key from previously exported file. Use to transfer key to new computer
+        /// Generates a new Cryptographic key from Security.Cryptography. Use to initiate new basis for encrypting objects.
         /// </summary>
-        /// <param name="ImportFile">Previously exported symmetric key to be restored</param>
-        /// <param name="Password">Password used to secure previously exported key</param>
-        /// <param name="NewProviderKey">Location and filename of key to be restored.</param>
+        /// <param name="NewKeyFile">Name of new keyfile to be generated</param>
+        /// <param name="Password">Password used to secure the new keyfile</param>
         /// <returns></returns>
-        public static bool Generate(string Password, FileInfo NewKeyFile)
+        public static bool Generate(FileInfo NewKeyFile, string Password )
         {
             KeyManager.ClearCache();
 
